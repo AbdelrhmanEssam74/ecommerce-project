@@ -9,7 +9,7 @@ This repository contains the **frontend code (HTML & CSS only)** for our **Week 
 
 ## 📂 Project Structure  
 
-/project-folder
+```plaintext
 │── index.html # Home Page
 │── login.html # Login Page
 │── register.html # Register Page
@@ -21,7 +21,7 @@ This repository contains the **frontend code (HTML & CSS only)** for our **Week 
 │ ├── main.css # Main Stylesheet
 │ ├── admin.css # Admin Styles
 │── images/ # Product & UI Images
-
+```
 
 ## 📌 How to Use  
 1. **Clone the repository**  
