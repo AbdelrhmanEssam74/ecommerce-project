@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="assets/CSS/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
+</head>
+<body>
+<!--Start Header-->
+<header>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">MyStore</a>
+            <div class="navbar-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="#" class="navbar-links">Home</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-links">Shop</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-links">About</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-links">Contact</a>
+                </li>
+            </ul>
+            <div class="navbar-auth">
+                <a href="#" class="auth-button login">Login</a>
+                <a href="#" class="auth-button signup">Signup</a>
+            </div>
+            <div class="navbar-cart">
+                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                <span class="cart-count">3</span>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--End Header-->
+<!--Hero section-->
+<div class="slider-container">
+    <div class="slider-wrapper swiper-wrapper">
+        <div class="slider-item swiper-slide">
+            <div class="slide-content">
+                <h3 class="slide-subtitle">Exclusive Offer</h3>
+                <h2 class="slide-title">50% Off on Latest Fashion Trends!</h2>
+                <p class="slide-description">Discover the newest arrivals in clothing and accessories. Limited-time discount on top brands!</p>
+                <a href="#" class="slide-button"><span>Shop Now</span></a>
+            </div>
+        </div>
+        <div class="slider-item swiper-slide">
+            <div class="slide-content">
+                <h3 class="slide-subtitle">Tech Deals</h3>
+                <h2 class="slide-title">Upgrade Your Gadgets with Up to 40% Off</h2>
+                <p class="slide-description">Shop the latest smartphones, laptops, and accessories at unbeatable prices. Don't miss out!</p>
+                <a href="#" class="slide-button"><span>Explore Deals</span></a>
+            </div>
+        </div>
+        <div class="slider-item swiper-slide">
+            <div class="slide-content">
+                <h3 class="slide-subtitle">Home & Living</h3>
+                <h2 class="slide-title">Revamp Your Home with Trendy Decor</h2>
+                <p class="slide-description">Discover premium furniture, lighting, and decor essentials to elevate your home ambiance.</p>
+                <a href="#" class="slide-button"><span>Shop Home</span></a>
+            </div>
+        </div>
+    </div>
+    <div class="slider-controls">
+        <ul class="slider-pagination">
+            <div class="slider-indicator"></div>
+            <li class="slider-tab current">Fashion Deals</li>
+            <li class="slider-tab">Electronics Sale</li>
+            <li class="slider-tab">Home & Living</li>
+        </ul>
+    </div>
+    <div class="slider-navigations">
+        <button id="slide-prev" class="material-symbols-rounded"><i class="fa-solid fa-caret-left"></i></button>
+        <button id="slide-next" class="material-symbols-rounded"><i class="fa-solid fa-caret-right"></i></button>
+    </div>
+</div>
+
+<!--Feature section-->
+<!-- Feature Section -->
+<section class="feature-section">
+    <div class="container">
+        <!-- Section Heading -->
+        <h2 class="section-heading">Why Choose Us?</h2>
+        <p class="section-subheading">Discover the benefits of shopping with us.</p>
+
+        <!-- Feature Grid -->
+        <div class="feature-grid">
+            <!-- Feature 1: Fast Shipping -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shipping-fast"></i>
+                </div>
+                <h3 class="feature-title">Fast Shipping</h3>
+                <p class="feature-description">Get your orders delivered quickly with our reliable shipping partners.</p>
+            </div>
+
+            <!-- Feature 2: Secure Payments -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title">Secure Payments</h3>
+                <p class="feature-description">Shop with confidence using our secure payment gateway.</p>
+            </div>
+
+            <!-- Feature 3: Easy Returns -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-exchange-alt"></i>
+                </div>
+                <h3 class="feature-title">Easy Returns</h3>
+                <p class="feature-description">Not satisfied? Return your purchase within 30 days for a full refund.</p>
+            </div>
+
+            <!-- Feature 4: 24/7 Support -->
+            <div class="feature-card">
+                <div class="feature-icon">
+                    <i class="fas fa-headset"></i>
+                </div>
+                <h3 class="feature-title">24/7 Support</h3>
+                <p class="feature-description">Our customer support team is always here to help you.</p>
+            </div>
+        </div>
+    </div>
+</section>
+<script src="assets/JS/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</body>
+</html>
