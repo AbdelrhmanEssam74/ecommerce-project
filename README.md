@@ -16,7 +16,9 @@ This repository contains the **frontend code (HTML & CSS only)** for our **Week 
 │── products.html # Product Listing Page
 │── cart.html # Shopping Cart Page
 │── checkout.html # Checkout Page
-│── admin.html # Admin Panel
+│── admin/
+│ ├── 
+│ ├── 
 │── styles/
 │ ├── main.css # Main Stylesheet
 │ ├── admin.css # Admin Styles
