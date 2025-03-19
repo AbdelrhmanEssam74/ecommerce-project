@@ -63,3 +63,14 @@ document.addEventListener("DOMContentLoaded", () => {
         resizeTimer = setTimeout(() => updateIndicator(sliderTabs[swiper.activeIndex], swiper.activeIndex), 200);
     });
 });
+
+
+const sliderTrack = document.querySelector('.slider-track');
+
+sliderTrack.addEventListener('mouseenter', () => {
+    sliderTrack.style.animationPlayState = 'paused';
+});
+
+sliderTrack.addEventListener('mouseleave', () => {
+    sliderTrack.style.animationPlayState = 'running';
+});
