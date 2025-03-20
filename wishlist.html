@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Wishlist</title>
+    <link rel="stylesheet" href="assets/CSS/wishlist.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+<!--Start Header-->
+<header>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">MyStore</a>
+            <div class="navbar-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="index.html" class="navbar-links">Home</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="products.html" class="navbar-links">Shop</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-links">About</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="#" class="navbar-links">Contact</a>
+                </li>
+            </ul>
+            <div class="navbar-auth">
+                <a href="#" class="auth-button login">Login</a>
+                <a href="#" class="auth-button signup">Signup</a>
+            </div>
+            <div class="navbar-cart">
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <span class="cart-count">3</span>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--End Header-->
+
+<section class="wishlist-page">
+    <div class="container">
+        <h1>Your Wishlist</h1>
+        <div class="wishlist-items">
+            <div class="wishlist-item">
+                <div class="item-image">
+                    <img src="https://via.placeholder.com/100x100/FF6347/FFFFFF?text=Product+1" alt="Product 1">
+                </div>
+                <div class="item-details">
+                    <h3 class="item-title">Smartphone XYZ</h3>
+                    <p class="item-price">$499.99</p>
+                    <p class="item-description">
+                        The Smartphone XYZ is a high-performance device with a 6.5-inch display, 128GB storage, and a 48MP camera.
+                    </p>
+                </div>
+                <div class="item-actions">
+                    <button class="move-to-cart"><i class="fas fa-shopping-cart"></i> Move to Cart</button>
+                    <button class="remove-item"><i class="fas fa-trash"></i> Remove</button>
+                </div>
+            </div>
+            <div class="wishlist-item">
+                <div class="item-image">
+                    <img src="https://via.placeholder.com/100x100/4682B4/FFFFFF?text=Product+2" alt="Product 2">
+                </div>
+                <div class="item-details">
+                    <h3 class="item-title">Men's Shirt</h3>
+                    <p class="item-price">$29.99</p>
+                    <p class="item-description">
+                        A stylish and comfortable men's shirt, perfect for casual outings or formal events.
+                    </p>
+                </div>
+                <div class="item-actions">
+                    <button class="move-to-cart"><i class="fas fa-shopping-cart"></i> Move to Cart</button>
+                    <button class="remove-item"><i class="fas fa-trash"></i> Remove</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer class="footer">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-section">
+                <h3 class="footer-heading">About Us</h3>
+                <p class="footer-text">We are a leading e-commerce platform offering the best products at affordable
+                    prices. Shop with us for a seamless experience.</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Shop</a></li>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">Contact Us</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, City, Country</li>
+                    <li><i class="fas fa-phone"></i> +123 456 7890</li>
+                    <li><i class="fas fa-envelope"></i> info@example.com</li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-heading">Subscribe to Our Newsletter</h3>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 MyStore. All Rights Reserved.</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
