@@ -1,5 +1,4 @@
 //? Navbar
-//* Toggle mobile menu
 const mobileMenu = document.getElementById('mobile-menu');
 const navbarMenu = document.querySelector('.navbar-menu');
 
