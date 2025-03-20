@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Product Details</title>
-    <link rel="stylesheet" href="assets/CSS/product_details.css">
+    <title>Cart</title>
+    <link rel="stylesheet" href="assets/CSS/cart.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
 </head>
 <body>
 <!--Start Header-->
@@ -36,56 +37,65 @@
                 <a href="#" class="auth-button signup">Signup</a>
             </div>
             <div class="navbar-cart">
-                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <a href="#"><i class="fas fa-shopping-cart"></i></a>
                 <span class="cart-count">3</span>
             </div>
         </div>
     </nav>
 </header>
 <!--End Header-->
-<!-- Product Details Section -->
-<section class="product-details-page">
+<!-- Shopping Cart Section -->
+<section class="cart-page">
     <div class="container">
-        <div class="product-image">
-            <img
-                    src="https://images.unsplash.com/photo-1661246627088-d6a600aa9261?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fFNtYXJ0cGhvbmUlMjBYWVp8ZW58MHx8MHx8fDA%3D"
-                    alt="Product Image">
+        <h1>Shopping Cart</h1>
+        <div class="cart-items">
+            <div class="cart-item">
+                <div class="item-image">
+                    <img src="https://images.unsplash.com/photo-1729860648275-7d13c852f576?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fFNtYXJ0cGhvbmUlMjBYWVp8ZW58MHx8MHx8fDA%3D" alt="Product 1">
+                </div>
+                <div class="item-details">
+                    <h3 class="item-title">Smartphone XYZ</h3>
+                    <p class="item-price">$499.99</p>
+                    <div class="item-quantity">
+                        <button class="quantity-btn" data-action="decrease">-</button>
+                        <input type="number" class="quantity-input" value="1" min="1">
+                        <button class="quantity-btn" data-action="increase">+</button>
+                    </div>
+                </div>
+                <div class="item-actions">
+                    <button class="remove-item"><i class="fas fa-trash"></i> Remove</button>
+                </div>
+            </div>
+            <div class="cart-item">
+                <div class="item-image">
+                    <img src="https://images.unsplash.com/photo-1602810317536-5d5e8a552d15?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fE1lbidzJTIwU2hpcnR8ZW58MHx8MHx8fDA%3D" alt="Product 2">
+                </div>
+                <div class="item-details">
+                    <h3 class="item-title">Men's Shirt</h3>
+                    <p class="item-price">$29.99</p>
+                    <div class="item-quantity">
+                        <button class="quantity-btn" data-action="decrease">-</button>
+                        <input type="number" class="quantity-input" value="2" min="1">
+                        <button class="quantity-btn" data-action="increase">+</button>
+                    </div>
+                </div>
+                <div class="item-actions">
+                    <button class="remove-item"><i class="fas fa-trash"></i> Remove</button>
+                </div>
+            </div>
         </div>
-        <div class="product-info">
-            <h1 class="product-title">Smartphone XYZ</h1>
-            <p class="product-price">$499.99</p>
-            <p class="product-description">
-                The Smartphone XYZ is a high-performance device with a 6.5-inch display, 128GB storage, and a 48MP camera. Perfect for photography, gaming, and productivity.
-            </p>
-            <div class="product-actions">
-                <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                <button class="wishlist"><i class="fas fa-heart"></i> Add to Wishlist</button>
+        <div class="cart-summary">
+            <h2>Order Summary</h2>
+            <div class="summary-details">
+                <p>Subtotal: <span class="subtotal">$529.98</span></p>
+                <p>Shipping: <span class="shipping">$10.00</span></p>
+                <p>Tax: <span class="tax">$42.40</span></p>
+                <p class="total">Total: <span class="total-amount">$582.38</span></p>
             </div>
-            <div class="product-specs">
-                <h3>Specifications</h3>
-                <ul>
-                    <li><strong>Display:</strong> 6.5-inch AMOLED</li>
-                    <li><strong>Storage:</strong> 128GB</li>
-                    <li><strong>Camera:</strong> 48MP + 12MP + 8MP</li>
-                    <li><strong>Battery:</strong> 5000mAh</li>
-                    <li><strong>Processor:</strong> Snapdragon 888</li>
-                </ul>
-            </div>
-            <div class="product-reviews">
-                <h3>Customer Reviews</h3>
-                <div class="review">
-                    <p class="review-text">"Amazing phone! The camera quality is outstanding, and the battery lasts all day."</p>
-                    <p class="review-author">- John Doe</p>
-                </div>
-                <div class="review">
-                    <p class="review-text">"Great value for money. Highly recommended!"</p>
-                    <p class="review-author">- Jane Smith</p>
-                </div>
-            </div>
+            <button class="checkout-btn">Proceed to Checkout</button>
         </div>
     </div>
 </section>
-
 <!-- Footer Section -->
 <footer class="footer">
     <div class="container">
@@ -132,5 +142,6 @@
         </div>
     </div>
 </footer>
+<script src="assets/JS/cart.js"></script>
 </body>
 </html>
