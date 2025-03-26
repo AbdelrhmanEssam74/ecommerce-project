@@ -148,7 +148,9 @@ function validateLogin(event) {
         .then((userCredential) => {
             const user = userCredential.user;
             // Set cookie for login status, user id and user type
-            setCookie("admin", user.userType, 30)
+            console.log(user.userType)
+            if (user.userType === "Admin")
+                setCookie('Admin', 1, 30); // Expires in 30 day
             setCookie("uid", user.uid, 30); // Expires in 1 day
             setCookie("login", 1, 30); // Expires in 1 day
             window.location.href = "index.html";

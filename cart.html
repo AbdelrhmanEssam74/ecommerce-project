@@ -50,56 +50,29 @@
     <div class="container">
         <h1>Shopping Cart</h1>
         <div class="cart-items">
-            <div class="cart-item">
-                <div class="item-image">
-                    <img src="https://images.unsplash.com/photo-1729860648275-7d13c852f576?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fFNtYXJ0cGhvbmUlMjBYWVp8ZW58MHx8MHx8fDA%3D" alt="Product 1">
-                </div>
-                <div class="item-details">
-                    <h3 class="item-title">Smartphone XYZ</h3>
-                    <p class="item-price">$499.99</p>
-                    <div class="item-quantity">
-                        <button class="quantity-btn" data-action="decrease">-</button>
-                        <input type="number" class="quantity-input" value="1" min="1">
-                        <button class="quantity-btn" data-action="increase">+</button>
-                    </div>
-                </div>
-                <div class="item-actions">
-                    <button class="remove-item"><i class="fas fa-trash"></i> Remove</button>
-                </div>
-            </div>
-            <div class="cart-item">
-                <div class="item-image">
-                    <img src="https://images.unsplash.com/photo-1602810317536-5d5e8a552d15?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fE1lbidzJTIwU2hpcnR8ZW58MHx8MHx8fDA%3D" alt="Product 2">
-                </div>
-                <div class="item-details">
-                    <h3 class="item-title">Men's Shirt</h3>
-                    <p class="item-price">$29.99</p>
-                    <div class="item-quantity">
-                        <button class="quantity-btn" data-action="decrease">-</button>
-                        <input type="number" class="quantity-input" value="2" min="1">
-                        <button class="quantity-btn" data-action="increase">+</button>
-                    </div>
-                </div>
-                <div class="item-actions">
-                    <button class="remove-item"><i class="fas fa-trash"></i> Remove</button>
-                </div>
-            </div>
         </div>
         <div class="cart-summary">
             <h2>Order Summary</h2>
             <div class="summary-details">
-                <p>Subtotal: <span class="subtotal">$529.98</span></p>
-                <p>Shipping: <span class="shipping">$10.00</span></p>
-                <p>Tax: <span class="tax">$42.40</span></p>
-                <p class="total">Total: <span class="total-amount">$582.38</span></p>
+                <p>Subtotal: <span class="subtotal"></span></p>
+                <p>Shipping: <span class="shipping"></span></p>
+                <p>Tax: <span class="tax"></span></p>
+                <p class="total">Total: <span class="total-amount"></span></p>
             </div>
-            <button class="checkout-btn">Proceed to Checkout</button>
+            <button class="checkout-btn">Checkout</button>
         </div>
     </div>
 </section>
 <!-- Footer Section -->
 <footer class="footer" id="footer-container">
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Firebase App (Required) -->
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+<!-- Firebase Database -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-app-compat.min.js" integrity="sha512-+sREIsioPWovonmPhKdOdLYSVtjTVf1egJBBXyB/F03Rr2F/ZfNMQUH2xaSGpYIQhIcCl2o48QVMbzr4VcEHfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-database-compat.min.js" integrity="sha512-pXaLMpJoBhnnwjagRD7t1vCeCCYppq51TrpAwbwbIM7wjUMoO8/z7rmkRxdVhO3NnETxBD/X8UbOGS0piyHRcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js"></script>
 <script src="assets/JS/cart.js"></script>
 <script src="assets/JS/checkLogin.js"></script>
 </body>
