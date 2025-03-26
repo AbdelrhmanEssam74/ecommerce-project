@@ -1,7 +1,6 @@
 
 //? Navbar
 const mobileMenu = document.getElementById('mobile-menu');
-console.log(mobileMenu)
 const navbarMenu = document.querySelector('.navbar-menu');
 
 // mobileMenu.addEventListener('click', () => {

@@ -9,7 +9,6 @@ function getCookie(name) {
 
 function updateAuthButtons() {
     const authContainer = document.getElementById("auth-container");
-    console.log(authContainer)
     const user = getCookie("login");
     if (user) {
         authContainer.innerHTML = `

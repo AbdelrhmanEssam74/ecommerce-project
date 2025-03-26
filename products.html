@@ -43,7 +43,7 @@
             </div>
             <div class="navbar-cart">
                 <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
-                <span class="cart-count">3</span>
+                <span class="cart-count"></span>
             </div>
         </div>
     </nav>
@@ -69,7 +69,13 @@
                             src="https://images.unsplash.com/photo-1603184017968-953f59cd2e37?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fFNtYXJ0cGhvbmV8ZW58MHx8MHx8fDA%3D"
                             alt="Smartphone"></a>
                     <div class="product-actions">
-                        <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button class="add-to-cart"
+                                data-id="5"
+                                data-name="Smartphone"
+                                data-price="499"
+                                data-image="https://images.unsplash.com/photo-1603184017968-953f59cd2e37?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fFNtYXJ0cGhvbmV8ZW58MHx8MHx8fDA%3D">
+                            <i class="fas fa-shopping-cart">
+                            </i> Add to Cart</button>
                         <button class="wishlist"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
@@ -84,28 +90,19 @@
                             src="https://images.unsplash.com/photo-1602810320073-1230c46d89d4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8TWVuJ3MlMjBTaGlydHxlbnwwfHwwfHx8MA%3D%3D"
                             alt="Men's Shirt"></a>
                     <div class="product-actions">
-                        <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                        <button class="add-to-cart"
+                                data-id="9"
+                                data-name="Men's Shirt"
+                                data-price="60"
+                                data-image="https://images.unsplash.com/photo-1602810320073-1230c46d89d4?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8TWVuJ3MlMjBTaGlydHxlbnwwfHwwfHx8MA%3D%3D">
+                            <i class="fas fa-shopping-cart">
+                            </i> Add to Cart</button>
                         <button class="wishlist"><i class="fas fa-heart"></i> Wishlist</button>
                     </div>
                 </div>
                 <div class="product-details">
                     <h3 class="product-title">Men's Shirt</h3>
                     <p class="product-price"> 29.99</p>
-                </div>
-            </div>
-            <div class="product-card" data-category="home">
-                <div class="product-image">
-                    <a href="product_details.html"><img
-                            src="https://plus.unsplash.com/premium_photo-1681980021035-5db5823c974b?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fEhvbWUlMjBEZWNvcnxlbnwwfHwwfHx8MA%3D%3D"
-                            alt="Home Decor"></a>
-                    <div class="product-actions">
-                        <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
-                        <button class="wishlist"><i class="fas fa-heart"></i> Wishlist</button>
-                    </div>
-                </div>
-                <div class="product-details">
-                    <h3 class="product-title">Home Decor</h3>
-                    <p class="product-price"> 49.99</p>
                 </div>
             </div>
         </div>
@@ -115,6 +112,14 @@
 <!-- Footer Section -->
 <footer class="footer" id="footer-container">
 </footer>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Firebase App (Required) -->
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+<!-- Firebase Database -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-app-compat.min.js" integrity="sha512-+sREIsioPWovonmPhKdOdLYSVtjTVf1egJBBXyB/F03Rr2F/ZfNMQUH2xaSGpYIQhIcCl2o48QVMbzr4VcEHfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-database-compat.min.js" integrity="sha512-pXaLMpJoBhnnwjagRD7t1vCeCCYppq51TrpAwbwbIM7wjUMoO8/z7rmkRxdVhO3NnETxBD/X8UbOGS0piyHRcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js"></script>
 <script src="assets/JS/checkLogin.js"></script>
 <script src="assets/JS/includeHeaderFooter.js"></script>
 <script src="assets/JS/products.js"></script>
