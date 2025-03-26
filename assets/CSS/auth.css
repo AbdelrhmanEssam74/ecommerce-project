@@ -1,0 +1,258 @@
+/* ===== Base Styles ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+body{
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+}
+/* ===== Navbar Styles ===== */
+.navbar {
+    background-color: #333;
+    color: white;
+    padding: 10px 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navbar-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    transition: opacity 0.3s ease;
+}
+
+.navbar-logo:hover {
+    opacity: 0.8;
+}
+
+.navbar-menu {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar-item {
+    margin-left: 25px;
+}
+
+.navbar-links {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.navbar-links:hover {
+    color: #ff6347;
+    transform: translateY(-2px);
+}
+
+.navbar-search {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.navbar-search input {
+    padding: 8px 12px;
+    border-radius: 4px;
+    margin-right: 5px;
+    font-size: 14px;
+    box-shadow: 0 0 0 2px transparent;
+    transition: box-shadow 0.3s ease;
+}
+
+.navbar-search input:focus {
+    box-shadow: 0 0 0 2px rgba(255, 99, 71, 0.5);
+}
+
+.navbar-search button {
+    background-color: #ff6347;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+}
+
+.navbar-search button:hover {
+    background-color: #e5533d;
+}
+
+.navbar-cart {
+    position: relative;
+    margin-left: 20px;
+}
+
+.navbar-cart a {
+    color: white;
+}
+
+.cart-count {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 2px 6px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.navbar-auth {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.auth-button {
+    padding: 8px 16px;
+    border-radius: 4px;
+    margin-left: 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.auth-button.login {
+    background-color: transparent;
+    border: 1px solid white;
+}
+
+.auth-button.signup {
+    background-color: #ff6347;
+    border: 1px solid #ff6347;
+}
+
+.auth-button:hover {
+    transform: translateY(-2px);
+}
+
+.auth-button.login:hover {
+    background-color: white;
+    color: #333;
+}
+
+.auth-button.signup:hover {
+    background-color: #e5533d;
+    border-color: #e5533d;
+}
+
+/* ===== Mobile Menu ===== */
+.navbar-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    margin-left: 20px;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: white;
+    margin: 4px 0;
+    transition: all 0.3s ease;
+}
+
+.navbar-toggle.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.navbar-toggle.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.navbar-toggle.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+.login-form{
+    margin-top: 100px;
+
+}
+.login-form, .register-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.register-form{
+    margin-top: 50px;
+}
+.login-form form, .register-form  form{
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 360px;
+}
+.login-form h3, .register-form h3 {
+    margin-bottom: 20px;
+    font-size: 24px;
+}
+.inputBox {
+    display: flex;
+    align-items: center;
+    border: 1px solid #e5533d;
+    border-radius: 5px;
+    margin: 10px 0;
+    padding: 5px;
+    background: #fff;
+}
+.inputBox span {
+    padding: 10px;
+    color: #333;
+}
+.inputBox input {
+    border: none;
+    outline: none;
+    flex: 1;
+    padding: 10px;
+}
+.error {
+    color: red;
+    font-size: 12px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+.btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: none;
+    background: #e5533d;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+}
+.btn:hover {
+    background: #c6422e;
+}
+.flex {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 10px 0;
+}
