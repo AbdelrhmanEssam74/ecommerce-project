@@ -4,11 +4,13 @@
     <meta charset="UTF-8">
     <title>Contact</title>
     <link rel="stylesheet" href="assets/CSS/contact.css">
+
+    <link rel="stylesheet" href="assets/CSS/header-footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
 <!--Start Header-->
-<header>
+<header id="header-container">
     <nav class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo">MyStore</a>
@@ -25,18 +27,18 @@
                     <a href="products.html" class="navbar-links">Shop</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="#" class="navbar-links">About</a>
+                    <a href="about.html" class="navbar-links">About</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="#" class="navbar-links">Contact</a>
+                    <a href="contact.html" class="navbar-links">Contact</a>
                 </li>
             </ul>
-            <div class="navbar-auth">
-                <a href="#" class="auth-button login">Login</a>
-                <a href="#" class="auth-button signup">Signup</a>
+            <div class="navbar-auth" id="auth-container">
+                <a href="login.html" class="auth-button login">Login</a>
+                <a href="register.html" class="auth-button signup">Signup</a>
             </div>
             <div class="navbar-cart">
-                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                 <span class="cart-count">3</span>
             </div>
         </div>

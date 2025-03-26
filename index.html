@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Home</title>
     <link rel="stylesheet" href="assets/CSS/style.css">
+    <link rel="stylesheet" href="assets/CSS/header-footer.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
@@ -12,7 +13,7 @@
 </head>
 <body>
 <!--Start Header-->
-<header>
+<header id="header-container">
     <nav class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo">MyStore</a>
@@ -29,18 +30,18 @@
                     <a href="products.html" class="navbar-links">Shop</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="#" class="navbar-links">About</a>
+                    <a href="about.html" class="navbar-links">About</a>
                 </li>
                 <li class="navbar-item">
-                    <a href="#" class="navbar-links">Contact</a>
+                    <a href="contact.html" class="navbar-links">Contact</a>
                 </li>
             </ul>
-            <div class="navbar-auth">
-                <a href="#" class="auth-button login">Login</a>
-                <a href="#" class="auth-button signup">Signup</a>
+            <div class="navbar-auth" id="auth-container">
+                <a href="login.html" class="auth-button login">Login</a>
+                <a href="register.html" class="auth-button signup">Signup</a>
             </div>
             <div class="navbar-cart">
-                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
                 <span class="cart-count">3</span>
             </div>
         </div>
@@ -282,50 +283,11 @@
 </section>
 
 <!-- Footer Section -->
-<footer class="footer">
-    <div class="container">
-        <div class="footer-grid">
-            <div class="footer-section">
-                <h3 class="footer-heading">About Us</h3>
-                <p class="footer-text">We are a leading e-commerce platform offering the best products at affordable prices. Shop with us for a seamless experience.</p>
-            </div>
-            <div class="footer-section">
-                <h3 class="footer-heading">Quick Links</h3>
-                <ul class="footer-links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Shop</a></li>
-                    <li><a href="#">About Us</a></li>
-                    <li><a href="#">Contact Us</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3 class="footer-heading">Contact Us</h3>
-                <ul class="footer-contact">
-                    <li><i class="fas fa-map-marker-alt"></i> 123 Main Street, City, Country</li>
-                    <li><i class="fas fa-phone"></i> +123 456 7890</li>
-                    <li><i class="fas fa-envelope"></i> info@example.com</li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3 class="footer-heading">Subscribe to Our Newsletter</h3>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="Enter your email" required>
-                    <button type="submit">Subscribe</button>
-                </form>
-                <div class="social-links">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2025 MyStore. All Rights Reserved.</p>
-        </div>
-    </div>
+<footer class="footer" id="footer-container">
 </footer>
+
+<script src="assets/JS/checkLogin.js"></script>
+<script src="assets/JS/includeHeaderFooter.js"></script>
 <script src="assets/JS/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 

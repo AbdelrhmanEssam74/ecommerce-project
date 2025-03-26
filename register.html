@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-functions.js"></script>
+    <link rel="stylesheet" href="assets/CSS/auth.css" />
+    <title>Register</title>
+</head>
+<body>
+<!--Start Header-->
+<header>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">MyStore</a>
+            <div class="navbar-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item">
+                    <a href="index.html" class="navbar-links">Home</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="products.html" class="navbar-links">Shop</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="about.html" class="navbar-links">About</a>
+                </li>
+                <li class="navbar-item">
+                    <a href="contact.html" class="navbar-links">Contact</a>
+                </li>
+            </ul>
+            <div class="navbar-auth">
+                <a href="login.html" class="auth-button login">Login</a>
+                <a href="register.html" class="auth-button signup">Signup</a>
+            </div>
+            <div class="navbar-cart">
+                <a href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                <span class="cart-count">3</span>
+            </div>
+        </div>
+    </nav>
+</header>
+<!--End Header-->
+<section class="register-form">
+    <form action="" onsubmit="return validateRegister(event)">
+        <h3>Register Now</h3>
+        <div class="inputBox">
+            <span class="fas fa-user"></span>
+            <input type="text" name="name" placeholder="Enter your name" id="name" />
+        </div>
+        <div id="nameError" class="error"></div>
+        <div class="inputBox">
+            <span class="fas fa-user"></span>
+            <input type="text" name="username" placeholder="Enter User name" id="username" />
+        </div>
+        <div id="usernameError" class="error"></div>
+        <div class="inputBox">
+            <span class="fas fa-envelope"></span>
+            <input type="email" name="email" placeholder="Enter your email" id="email" />
+        </div>
+        <div id="emailError" class="error"></div>
+        <div class="inputBox">
+            <span class="fas fa-lock"></span>
+            <input type="password" name="password" placeholder="Enter your password" id="password" />
+        </div>
+        <div id="passwordError" class="error"></div>
+        <div class="inputBox">
+            <span class="fas fa-lock"></span>
+            <input type="password" name="confirmPassword" placeholder="Confirm your password" id="confirmPassword" />
+        </div>
+        <div id="confirmPasswordError" class="error"></div>
+        <div class="flex">
+            <input type="radio" name="check" value="Admin" id="admin" />
+            <label for="admin">Admin</label>
+            <input type="radio" name="check" value="User" id="User" />
+            <label for="User">User</label>
+        </div>
+        <div id="userTypeError" class="error"></div>
+        <input type="submit" value="Sign Up" class="btn" />
+        <a href="login.html" class="btn">Already have an account</a>
+    </form>
+</section>
+<script src="assets/JS/auth.js"></script>
+</body>
+</html>
