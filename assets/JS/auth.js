@@ -147,13 +147,11 @@ function validateLogin(event) {
         .signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
             const user = userCredential.user;
-            console.log(user)
             // Set cookie for login status, user id and user type
             setCookie("admin", user.userType, 30)
             setCookie("uid", user.uid, 30); // Expires in 1 day
             setCookie("login", 1, 30); // Expires in 1 day
-
-            // window.location.href = "index.html";
+            window.location.href = "index.html";
         })
         .catch((error) => {
             console.log("Full Error Object:", error);
