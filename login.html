@@ -1,17 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link
             rel="stylesheet"
             href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
     />
-    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-firestore.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-functions.js"></script>
-    <link rel="stylesheet" href="assets/CSS/auth.css" />
+    <link rel="stylesheet" href="assets/CSS/auth.css"/>
     <title>Login</title>
 </head>
 <body>
@@ -57,17 +53,32 @@
         <h3>User Login</h3>
         <div class="inputBox">
             <span class="fas fa-envelope"></span>
-            <input type="email" name="email" placeholder="Enter your email" id="email" />
+            <input type="email" name="email" placeholder="Enter your email" id="email"/>
         </div>
         <div id="emailError" class="error"></div>
         <div class="inputBox">
             <span class="fas fa-lock"></span>
-            <input type="password" name="password" placeholder="Enter your password" id="password" />
+            <input type="password" name="password" placeholder="Enter your password" id="password"/>
         </div>
         <div id="passwordError" class="error"></div>
-        <input type="submit" value="Sign In" class="btn" />
+        <input type="submit" value="Sign In" class="btn"/>
         <a href="register.html" class="btn">Create an Account</a>
     </form>
+</div>
+<!-- Firebase App (Required) -->
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+<!-- Firebase Database -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-app-compat.min.js"
+        integrity="sha512-+sREIsioPWovonmPhKdOdLYSVtjTVf1egJBBXyB/F03Rr2F/ZfNMQUH2xaSGpYIQhIcCl2o48QVMbzr4VcEHfA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-database-compat.min.js"
+        integrity="sha512-pXaLMpJoBhnnwjagRD7t1vCeCCYppq51TrpAwbwbIM7wjUMoO8/z7rmkRxdVhO3NnETxBD/X8UbOGS0piyHRcg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.3.3/firebase-functions.js"></script>
 <script src="assets/JS/auth.js"></script>
 </body>
 </html>

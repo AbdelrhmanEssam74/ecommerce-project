@@ -174,4 +174,3 @@ function validateLogin(event) {
             }
         });
 }
-
