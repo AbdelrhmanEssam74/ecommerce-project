@@ -51,7 +51,7 @@ function addToCart(userId, productId, quantity, price, name, image) {
         });
     }).then(() => {
         updateCartCount(userId);
-        showCartAlert(name, image, "Added to Cart!" , "has been added to your cart.");
+        showCartAlert(name, image, "Added to Cart!", "has been added to your cart.");
     }).catch(error => {
         console.error("Error adding item to cart:", error);
     });
@@ -62,11 +62,11 @@ document.addEventListener("click", function (event) {
         const button = event.target;
         const productName = button.getAttribute("data-name");
         const productImage = button.getAttribute("data-image");
-        showCartAlert(productName, productImage, "Removed from Cart!" , "has been removed from your cart.");
+        showCartAlert(productName, productImage, "Removed from Cart!", "has been removed from your cart.");
     }
 });
 
-function showCartAlert(productName, productImage, title , text) {
+function showCartAlert(productName, productImage, title, text) {
     Swal.fire({
         title: title,
         text: `${productName} ${text}`,
@@ -85,28 +85,28 @@ function showCartAlert(productName, productImage, title , text) {
 
 function updateCartCount(userId) {
     const cartRef = firebase.database().ref("cart/" + userId);
-
+    let totalItems = 0;
     cartRef.once("value").then(snapshot => {
-        let totalItems = 0;
         snapshot.forEach(item => {
             totalItems += item.val().quantity;
         });
-
         document.querySelector(".cart-count").textContent = totalItems;
     }).catch(error => {
         console.error("Error updating cart count:", error);
     });
 }
 
-setInterval(() => {
+if (userId) {
     updateCartCount(userId)
-}, 1000);
+} else {
+    document.getElementById("navbar-cart").removeChild(document.querySelector(".cart-count"))
+}
 
 function getUserCart(userId) {
     firebase.database().ref("cart/" + userId).once("value")
         .then(snapshot => {
             if (snapshot.exists()) {
-                console.log("User Cart Data:", snapshot.val());
+                // console.log("User Cart Data:", snapshot.val());
             } else {
                 console.log("Cart is empty for this user.");
             }
