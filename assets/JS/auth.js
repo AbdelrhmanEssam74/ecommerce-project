@@ -11,19 +11,20 @@ const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
 
-// //validateForm register
+
 const functions = firebase.functions();
+
+// //validateForm register
 function validateRegister(event) {
     event.preventDefault();
     // errors
-    var nameError = document.getElementById("nameError");
-    var usernameError = document.getElementById("usernameError");
-    var emailError = document.getElementById("emailError");
-    var passwordError = document.getElementById("passwordError");
-    var confirmPasswordError = document.getElementById("confirmPasswordError");
-    var userTypeError = document.getElementById("userTypeError");
+    let nameError = document.getElementById("nameError");
+    let usernameError = document.getElementById("usernameError");
+    let emailError = document.getElementById("emailError");
+    let passwordError = document.getElementById("passwordError");
+    let confirmPasswordError = document.getElementById("confirmPasswordError");
+    let userTypeError = document.getElementById("userTypeError");
 
-    //  error messages
     nameError.textContent = "";
     usernameError.textContent = "";
     emailError.textContent = "";
@@ -37,14 +38,12 @@ function validateRegister(event) {
     const password = document.getElementById("password");
     const confirmPassword = document.getElementById("confirmPassword");
     const userType = document.querySelector('input[name="check"]:checked');
-    // Validate Name
     let isValid = true;
     if (!/^[A-Za-z\s]+$/.test(name.value)) {
         nameError.textContent = "Name must contain only letters.";
         isValid = false;
     }
 
-    // Validate Username
 
     if (!/^[A-Za-z0-9.]+$/.test(username.value)) {
         usernameError.textContent =
@@ -52,25 +51,20 @@ function validateRegister(event) {
         isValid = false;
     }
 
-    // Validate Email
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value)) {
         emailError.textContent = "Invalid email address.";
         isValid = false;
     }
 
-    // Validate Password
     if (password.value.length < 8) {
         passwordError.textContent = "Password must be at least 8 characters long.";
         isValid = false;
     }
 
-    // Validate Confirm Password
     if (password.value !== confirmPassword.value) {
         confirmPasswordError.textContent = "Passwords do not match.";
         isValid = false;
     }
-
-    // Validate User Type
     if (!userType.checked) {
         userTypeError.textContent = "Please select a user type.";
         isValid = false;
@@ -89,14 +83,11 @@ async function callCreateUserFunction() {
     const userType = document.querySelector('input[name="check"]:checked').value;
 
     try {
-        // تسجيل البيانات
         const userCredential = await auth.createUserWithEmailAndPassword(
             email,
             password
         );
         const user = userCredential.user;
-
-        // حفظ البيانات
         await db.collection("users").doc(user.uid).set({
             name: name,
             username: username,
@@ -105,9 +96,13 @@ async function callCreateUserFunction() {
             userType: userType,
             createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         });
-
-        console.log("User registered and saved to Firestore successfully!");
-        alert("User created successfully!");
+        // Set cookie for login status ,user id and user type
+        console.log(userType)
+        if (userType === "Admin")
+            setCookie('Admin', 1, 30); // Expires in 30 day
+        setCookie("uid", user.uid, 30); // Expires in 30 day
+        setCookie("login", 1, 30); // Expires in 30 day
+        window.location.href = "index.html";
     } catch (error) {
         console.error("Error creating user:", error);
         alert(error.message);
@@ -152,11 +147,13 @@ function validateLogin(event) {
         .signInWithEmailAndPassword(email, password)
         .then((userCredential) => {
             const user = userCredential.user;
+            console.log(user)
+            // Set cookie for login status, user id and user type
+            setCookie("admin", user.userType, 30)
+            setCookie("uid", user.uid, 30); // Expires in 1 day
+            setCookie("login", 1, 30); // Expires in 1 day
 
-            // Set cookie for login status
-            setCookie("login", 1, 365); // Expires in 1 day
-
-            window.location.href = "index.html";
+            // window.location.href = "index.html";
         })
         .catch((error) => {
             console.log("Full Error Object:", error);
