@@ -1,11 +1,12 @@
-# 📌 E-Commerce Frontend (HTML & CSS)
+# 📌 E-Commerce Frontend (HTML & CSS & Javascript)
 
 ## 🚀 Project Overview  
-This repository contains the **frontend code (HTML & CSS only)** for our **Week 2 Final Project** in the **ITI 4-Month Scholarship** program.
+This repository contains the **frontend code (HTML & CSS & Javascript)** for our **Week 2 Final Project** in the **ITI 4-Month Scholarship** program.
 
 ## 🛠️ Technologies Used  
 - **HTML**  
-- **CSS**  
+- **CSS**
+- **JS**
 
 ## 📂 Project Structure  
 
