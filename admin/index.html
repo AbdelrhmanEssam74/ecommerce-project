@@ -169,82 +169,52 @@
             </table>
         </div>
     </div>
-</div>
+    <!-- Orders Page -->
+    <div class="page active" id="orders">
+        <div class="header">
+            <h2>Order Management</h2>
+            <div class="user-info">
+                <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Admin">
+                <span>Admin User</span>
+            </div>
+        </div>
 
-<!-- Orders Page -->
-<div class="page" id="orders">
-    <div class="header">
-        <h2>Order Management</h2>
-        <div class="user-info">
-            <img src="https://via.placeholder.com/40" alt="Admin">
-            <span>Admin User</span>
+        <div class="form-container">
+            <h3>Order Filters</h3>
+            <div class="btn-group">
+                <button class="btn btn-secondary" onclick="loadAllOrders()">All Orders</button>
+                <button class="btn btn-primary" onclick="filterOrders('pending')">Pending</button>
+                <button class="btn btn-success" onclick="filterOrders('completed')">Completed</button>
+                <button class="btn btn-danger" onclick="filterOrders('cancelled')">Cancelled</button>
+            </div>
+        </div>
+
+        <div class="table-container">
+            <h3>Recent Orders</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>Order ID</th>
+                    <th>Customer</th>
+                    <th>Date</th>
+                    <th>Items</th>
+                    <th>Total</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody id="ordersTableBody">
+                <tr>
+                    <td colspan="7">Loading orders...</td>
+                </tr>
+                </tbody>
+            </table>
         </div>
     </div>
 
-    <div class="form-container">
-        <h3>Order Filters</h3>
-        <div class="btn-group">
-            <button class="btn btn-secondary">All Orders</button>
-            <button class="btn btn-primary">Pending</button>
-            <button class="btn btn-success">Completed</button>
-            <button class="btn btn-danger">Cancelled</button>
-        </div>
-    </div>
-
-    <div class="table-container">
-        <h3>Recent Orders</h3>
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Order ID</th>
-                <th>Customer</th>
-                <th>Date</th>
-                <th>Items</th>
-                <th>Total</th>
-                <th>Status</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td>ORD1001</td>
-                <td>John Doe</td>
-                <td>2023-05-15</td>
-                <td>3</td>
-                <td>1,250 EGP</td>
-                <td><span class="badge bg-primary">Pending</span></td>
-                <td>
-                    <button class="action-btn btn-primary"><i class="fas fa-eye"></i> View</button>
-                    <button class="action-btn btn-success"><i class="fas fa-check"></i> Complete</button>
-                </td>
-            </tr>
-            <tr>
-                <td>ORD1002</td>
-                <td>Jane Smith</td>
-                <td>2023-05-14</td>
-                <td>2</td>
-                <td>850 EGP</td>
-                <td><span class="badge bg-success">Completed</span></td>
-                <td>
-                    <button class="action-btn btn-primary"><i class="fas fa-eye"></i> View</button>
-                    <button class="action-btn btn-danger"><i class="fas fa-times"></i> Cancel</button>
-                </td>
-            </tr>
-            <tr>
-                <td>ORD1003</td>
-                <td>Mike Johnson</td>
-                <td>2023-05-13</td>
-                <td>5</td>
-                <td>2,150 EGP</td>
-                <td><span class="badge bg-danger">Cancelled</span></td>
-                <td>
-                    <button class="action-btn btn-primary"><i class="fas fa-eye"></i> View</button>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
 </div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>

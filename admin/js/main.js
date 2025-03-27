@@ -182,6 +182,110 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Call function on page load
     updateDashboard();
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    loadAllOrders();
+});
+
+function loadAllOrders() {
+    const ordersTableBody = document.querySelector("#orders .table tbody");
+    ordersTableBody.innerHTML = ""; // Clear previous data
+
+    firebase.database().ref("orders").once("value")
+        .then(snapshot => {
+            if (!snapshot.exists()) {
+                ordersTableBody.innerHTML = "<tr><td colspan='7'>No orders found.</td></tr>";
+                return;
+            }
+
+            snapshot.forEach(userSnapshot => {
+                userSnapshot.forEach(orderSnapshot => {
+                    let orderId = orderSnapshot.key;
+                    let orderData = orderSnapshot.val();
+                    let customerId = userSnapshot.key;
+                    let orderDate = new Date(orderData.timestamp).toLocaleDateString();
+                    let totalItems = Object.keys(orderData.items).length;
+                    let totalAmount = orderData.total;
+                    let orderStatus = orderData.status;
+                    let customerName = "Unknown"; // Fetch from user data if available
+
+                    // Create order row
+                    let orderRow = `
+                        <tr>
+                            <td>${orderId}</td>
+                            <td>${customerName}</td>
+                            <td>${orderDate}</td>
+                            <td>${totalItems}</td>
+                            <td>${totalAmount} EGP</td>
+                            <td><span class="badge bg-${getStatusColor(orderStatus)}">${capitalize(orderStatus)}</span></td>
+                            <td>
+                                <button class="action-btn btn-primary" onclick="viewOrder('${customerId}', '${orderId}')"><i class="fas fa-eye"></i> View</button>
+                                ${orderStatus === "pending" ? `<button class="action-btn btn-success" onclick="updateOrderStatus('${customerId}', '${orderId}', 'completed')"><i class="fas fa-check"></i> Complete</button>` : ""}
+                                ${orderStatus !== "cancelled" ? `<button class="action-btn btn-danger" onclick="updateOrderStatus('${customerId}', '${orderId}', 'cancelled')"><i class="fas fa-times"></i> Cancel</button>` : ""}
+                            </td>
+                        </tr>
+                    `;
+
+                    ordersTableBody.innerHTML += orderRow;
+                });
+            });
+        })
+        .catch(error => {
+            console.error("Error fetching orders:", error);
+        });
+}
+
+function getStatusColor(status) {
+    switch (status) {
+        case "pending": return "primary";
+        case "completed": return "success";
+        case "cancelled": return "danger";
+        default: return "secondary";
+    }
+}
+
+function capitalize(text) {
+    return text.charAt(0).toUpperCase() + text.slice(1);
+}
+
+function updateOrderStatus(userId, orderId, newStatus) {
+    firebase.database().ref(`orders/${userId}/${orderId}`).update({ status: newStatus })
+        .then(() => {
+            Swal.fire("Updated!", `Order marked as ${newStatus}.`, "success");
+            loadAllOrders(); // Refresh orders
+        })
+        .catch(error => {
+            console.error("Error updating order status:", error);
+        });
+}
+
+function viewOrder(userId, orderId) {
+    firebase.database().ref(`orders/${userId}/${orderId}`).once("value")
+        .then(snapshot => {
+            if (snapshot.exists()) {
+                let orderData = snapshot.val();
+                let itemsHtml = "";
+
+                Object.values(orderData.items).forEach(item => {
+                    itemsHtml += `<p><strong>${item.name}</strong> (x${item.quantity}) - ${item.price} EGP</p>`;
+                });
+
+                Swal.fire({
+                    title: `Order ID: ${orderId}`,
+                    html: `<strong>Customer:</strong> Unknown<br>
+                           <strong>Date:</strong> ${new Date(orderData.timestamp).toLocaleDateString()}<br>
+                           <strong>Status:</strong> ${capitalize(orderData.status)}<br>
+                           <strong>Items:</strong> ${itemsHtml}<br>
+                           <strong>Total:</strong> ${orderData.total} EGP`,
+                    icon: "info"
+                });
+            } else {
+                Swal.fire("Error", "Order details not found.", "error");
+            }
+        })
+        .catch(error => {
+            console.error("Error fetching order details:", error);
+        });
+}
