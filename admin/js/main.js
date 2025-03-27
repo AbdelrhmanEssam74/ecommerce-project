@@ -83,8 +83,8 @@ document.addEventListener("DOMContentLoaded", function () {
                     <td>${product.stock}</td>
                     <td>${product.description}</td>
                     <td>
-                        <button class="action-btn edit" data-id="${productId}">Edit</button>
-                        <button class="action-btn delete" data-id="${productId}">Delete</button>
+                        <button class="action-btn btn-primary edit" data-id="${productId}">Edit</button>
+                        <button class="action-btn btn-danger delete" data-id="${productId}">Delete</button>
                     </td>
                 </tr>
                 `;
