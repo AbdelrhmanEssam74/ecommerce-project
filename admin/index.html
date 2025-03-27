@@ -182,10 +182,10 @@
         <div class="form-container">
             <h3>Order Filters</h3>
             <div class="btn-group">
-                <button class="btn btn-secondary" onclick="loadAllOrders()">All Orders</button>
-                <button class="btn btn-primary" onclick="filterOrders('pending')">Pending</button>
-                <button class="btn btn-success" onclick="filterOrders('completed')">Completed</button>
-                <button class="btn btn-danger" onclick="filterOrders('cancelled')">Cancelled</button>
+                <button class=" btn btn-primary filter-btn" data-status="pending">Pending Orders</button>
+                <button class="filter-btn btn btn-success" data-status="completed">Completed Orders</button>
+                <button class="filter-btn btn btn-danger" data-status="cancelled">Cancelled Orders</button>
+
             </div>
         </div>
 

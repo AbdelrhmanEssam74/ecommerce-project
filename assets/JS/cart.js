@@ -259,6 +259,7 @@ function checkoutOrder(userId) {
         .then(() => {
             updateCartCount(userId);
             Swal.fire("Order Placed!", "Your order has been successfully placed.", "success");
+            setInterval(()=>{window.location.href = "orders.html"}, 2000);
         })
         .catch(error => {
             console.error("Error processing order:", error);

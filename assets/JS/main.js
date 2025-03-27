@@ -87,7 +87,7 @@ function loadProducts() {
     const galleryGrid = document.getElementById("productGallery");
     galleryGrid.innerHTML = ""; // Clear existing content
 
-    database.ref("products").limitToFirst(6).once("value", (snapshot) => {
+    database.ref("products").limitToFirst(8).once("value", (snapshot) => {
         let count = 0;
         snapshot.forEach((childSnapshot) => {
             if (count >= 8) return; // Stop after 8 products

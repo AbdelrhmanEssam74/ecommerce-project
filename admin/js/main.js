@@ -289,3 +289,51 @@ function viewOrder(userId, orderId) {
             console.error("Error fetching order details:", error);
         });
 }
+function displayOrders(orders) {
+    const ordersTableBody = document.querySelector("#orders .table tbody");
+    ordersTableBody.innerHTML = ""; // Clear existing orders
+
+    if (orders.length === 0) {
+        ordersTableBody.innerHTML = "<tr><td colspan='7'>No orders found.</td></tr>";
+        return;
+    }
+
+    orders.forEach(order => {
+        let orderRow = `
+            <tr>
+                <td>${order.orderId}</td>
+                <td>${order.customer || "Unknown"}</td>
+                <td>${new Date(order.timestamp).toLocaleDateString()}</td>
+                <td>${Object.keys(order.items || {}).length}</td>
+                <td>${order.total} EGP</td>
+                <td><span class="badge bg-${getStatusColor(order.status)}">${capitalize(order.status)}</span></td>
+                <td>
+                    <button class="action-btn btn-primary" onclick="viewOrder('${order.userId}', '${order.orderId}')"><i class="fas fa-eye"></i> View</button>
+                    ${order.status === "pending" ? `<button class="action-btn btn-success" onclick="updateOrderStatus('${order.userId}', '${order.orderId}', 'completed')"><i class="fas fa-check"></i> Complete</button>` : ""}
+                    ${order.status !== "cancelled" ? `<button class="action-btn btn-danger" onclick="updateOrderStatus('${order.userId}', '${order.orderId}', 'cancelled')"><i class="fas fa-times"></i> Cancel</button>` : ""}
+                </td>
+            </tr>
+        `;
+
+        ordersTableBody.innerHTML += orderRow;
+    });
+}
+const ordersRef = firebase.database().ref("orders");
+
+function filterOrders(status) {
+    ordersRef.once("value")
+        .then(snapshot => {
+            let filteredOrders = [];
+            snapshot.forEach(userSnapshot => {
+                userSnapshot.forEach(orderSnapshot => {
+                    let orderData = orderSnapshot.val();
+                    if (orderData.status === status) {
+                        filteredOrders.push({ orderId: orderSnapshot.key, ...orderData });
+                    }
+                });
+            });
+
+            displayOrders(filteredOrders);
+        })
+        .catch(error => console.error("Error filtering orders:", error));
+}
