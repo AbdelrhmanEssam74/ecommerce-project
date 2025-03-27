@@ -74,3 +74,4 @@ sliderTrack.addEventListener('mouseenter', () => {
 sliderTrack.addEventListener('mouseleave', () => {
     sliderTrack.style.animationPlayState = 'running';
 });
+

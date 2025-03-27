@@ -207,3 +207,59 @@ document.addEventListener("click", function (event) {
 document.addEventListener("DOMContentLoaded", function () {
     loadCartItems(userId);
 });
+
+document.querySelector(".checkout-btn").addEventListener("click", function () {
+    checkoutOrder(userId);
+});
+
+function checkoutOrder(userId) {
+    const cartRef = firebase.database().ref("cart/" + userId);
+    const ordersRef = firebase.database().ref("orders/" + userId);
+
+    cartRef.once("value")
+        .then(snapshot => {
+            if (!snapshot.exists()) {
+                Swal.fire("Cart is empty", "Please add items to your cart before checkout.", "warning");
+                return;
+            }
+
+            let cartItems = snapshot.val();
+            let subtotal = 0;
+
+            Object.keys(cartItems).forEach(productId => {
+                subtotal += cartItems[productId].price * cartItems[productId].quantity;
+            });
+
+            const shipping = 10.00;
+            const tax = subtotal * 0.08;
+            const totalAmount = subtotal + shipping + tax;
+
+            // Create order object
+            const orderData = {
+                items: cartItems,
+                subtotal: subtotal,
+                shipping: shipping,
+                tax: tax,
+                total: totalAmount,
+                status: "pending",
+                timestamp: new Date().toISOString()
+            };
+
+            // Save order to Firebase
+            return ordersRef.push(orderData);
+        })
+        .then(() => {
+            // Clear user's cart
+            return cartRef.remove();
+        })
+        .then(() => {
+            // Update UI & show confirmation
+            updateCartCount(userId);
+            Swal.fire("Order Placed!", "Your order has been successfully placed.", "success");
+        })
+        .catch(error => {
+            console.error("Error processing order:", error);
+            Swal.fire("Error", "Something went wrong. Please try again.", "error");
+        });
+}
+
