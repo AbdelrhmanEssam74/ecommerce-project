@@ -87,22 +87,25 @@ function loadProducts() {
     const galleryGrid = document.getElementById("productGallery");
     galleryGrid.innerHTML = ""; // Clear existing content
 
-    database.ref("products").once("value", (snapshot) => {
+    database.ref("products").limitToFirst(6).once("value", (snapshot) => {
+        let count = 0;
         snapshot.forEach((childSnapshot) => {
+            if (count >= 6) return; // Stop after 6 products
             const product = childSnapshot.val();
             const productId = childSnapshot.key; // Unique ID
 
             const productHTML = `
-                    <div class="gallery-item">
-                        <img src="${product.image}" alt="${product.name}">
-                        <div class="gallery-overlay">
-                            <h3 class="product-title">${product.name}</h3>
-                            <p class="product-price">EG ${product.price}</p>
-                            <button class="view-details" data-id="${productId}">View Details</button>
-                        </div>
+                <div class="gallery-item">
+                    <img src="${product.image}" alt="${product.name}">
+                    <div class="gallery-overlay">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-price">EG ${product.price}</p>
+                        <button class="view-details" data-id="${productId}">View Details</button>
                     </div>
-                `;
+                </div>
+            `;
             galleryGrid.innerHTML += productHTML;
+            count++;
         });
 
         // Add event listener to all "View Details" buttons
