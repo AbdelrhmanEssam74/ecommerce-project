@@ -35,10 +35,10 @@ function loadProductDetails() {
                 const productDescription = document.querySelector(".product-description");
                 const productSpecs = document.querySelector(".product-specs");
 
-                if (productImage) productImage.src = product.image || "assets/images/default-product.jpg";
-                if (productTitle) productTitle.textContent = product.name || "Unknown Product";
+                if (productImage) productImage.src = product.image
+                if (productTitle) productTitle.textContent = product.name
                 if (productPrice) productPrice.textContent = product.price ? `EG ${product.price}` : "Price Not Available";
-                if (productDescription) productDescription.textContent = product.description || "No description available.";
+                if (productDescription) productDescription.textContent = product.description
 
                 // Update Specifications
                 if (productSpecs) {
