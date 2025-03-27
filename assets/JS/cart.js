@@ -1,22 +1,23 @@
-const firebaseConfig = {
 
-    databaseURL: "https://e-commerce-iti-74-default-rtdb.asia-southeast1.firebasedatabase.app/"
-};
 firebase.initializeApp(firebaseConfig);
 
 // console.log(db)
 const addCartBtn = document.querySelectorAll(".add-to-cart")
 
 // get userid from cookies
-const cookies = document.cookie;
-const cookiesArr = cookies.split(";");
-let userId = "";
+// const cookies = document.cookie;
+// const cookiesArr = cookies.split(";");
+// let userId = "";
 cookiesArr.forEach((cookie) => {
     const cookieArr = cookie.split("=");
     if (cookieArr[0].trim() === "uid") {
         userId = cookieArr[1];
     }
 });
+
+
+
+
 addCartBtn.forEach(button => {
     button.addEventListener("click", function () {
         const user_id = userId
@@ -190,42 +191,7 @@ document.addEventListener("DOMContentLoaded", function () {
     loadCartItems(userId);
 });
 
-// Wishlist Button Click Event
-let wishlist = document.querySelectorAll(".wishlist");
-wishlist.forEach(button => {
-    button.addEventListener("click", function () {
-        const user_id = userId
-        const productId = this.dataset.id;
-        const productName = this.dataset.name;
-        const productPrice = this.dataset.price;
-        const productImage = this.dataset.image;
-        toggleWishlist(user_id, productId, productName, productPrice, productImage);
-        button.textContent="Remove from Wishlist";
-    });
-});
 
-// Function to Add/Remove Wishlist Items
-function toggleWishlist(userId, productId, name, price, image) {
-    const wishlistRef = db.ref("wishlist/" + userId + "/" + productId);
-
-    wishlistRef.once("value").then(snapshot => {
-        if (snapshot.exists()) {
-            wishlistRef.remove().then(() => {
-                showCartAlert(name, image, "Removed from Wishlist!", "has been removed.");
-            });
-        } else {
-            wishlistRef.set({
-                name: name,
-                price: parseFloat(price),
-                image: image
-            }).then(() => {
-                showCartAlert(name, image, "Added to Wishlist!", "has been saved.");
-            });
-        }
-    }).catch(error => {
-        console.error("Error updating wishlist:", error);
-    });
-}
 
 function showCartAlert(productName, productImage, title, text) {
     Swal.fire({
