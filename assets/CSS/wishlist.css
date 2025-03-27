@@ -1,4 +1,13 @@
 /* Wishlist Page Styles */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: #f9f9f9;
+}
 .wishlist-container {
     max-width: 800px;
     margin: 40px auto;
