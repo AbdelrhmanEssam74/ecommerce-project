@@ -61,22 +61,6 @@ document.addEventListener("click", function (event) {
     }
 });
 
-function showCartAlert(productName, productImage, title, text) {
-    Swal.fire({
-        title: title,
-        text: `${productName} ${text}`,
-        imageUrl: productImage,
-        imageWidth: 100,
-        imageHeight: 100,
-        imageAlt: productName,
-        timer: 2000,
-        timerProgressBar: true,
-        showConfirmButton: false,
-        position: "top-end",
-        toast: true,
-        icon: "success"
-    });
-}
 
 function updateCartCount(userId) {
     const cartRef = firebase.database().ref("cart/" + userId);
@@ -208,7 +192,62 @@ document.addEventListener("DOMContentLoaded", function () {
     loadCartItems(userId);
 });
 
-document.querySelector(".checkout-btn").addEventListener("click", function () {
+// Wishlist Button Click Event
+let wishlist = document.querySelectorAll(".wishlist");
+wishlist.forEach(button => {
+    button.addEventListener("click", function () {
+        const user_id = userId
+        const productId = this.dataset.id;
+        const productName = this.dataset.name;
+        const productPrice = this.dataset.price;
+        const productImage = this.dataset.image;
+        toggleWishlist(user_id, productId, productName, productPrice, productImage);
+        button.textContent="Remove from Wishlist";
+    });
+});
+
+// Function to Add/Remove Wishlist Items
+function toggleWishlist(userId, productId, name, price, image) {
+    const wishlistRef = db.ref("wishlist/" + userId + "/" + productId);
+
+    wishlistRef.once("value").then(snapshot => {
+        if (snapshot.exists()) {
+            wishlistRef.remove().then(() => {
+                showCartAlert(name, image, "Removed from Wishlist!", "has been removed.");
+            });
+        } else {
+            wishlistRef.set({
+                name: name,
+                price: parseFloat(price),
+                image: image
+            }).then(() => {
+                showCartAlert(name, image, "Added to Wishlist!", "has been saved.");
+            });
+        }
+    }).catch(error => {
+        console.error("Error updating wishlist:", error);
+    });
+}
+
+function showCartAlert(productName, productImage, title, text) {
+    Swal.fire({
+        title: title,
+        text: `${productName} ${text}`,
+        imageUrl: productImage,
+        imageWidth: 100,
+        imageHeight: 100,
+        imageAlt: productName,
+        timer: 2000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        position: "top-end",
+        toast: true,
+        icon: "success"
+    });
+}
+let checkoutBtn = document.querySelector(".checkout-btn");
+if(checkoutBtn)
+    checkoutBtn.addEventListener("click", function () {
     checkoutOrder(userId);
 });
 
@@ -290,4 +329,10 @@ function initPayPalButton() {
         }
     }).render('#paypal-button-container');
 }
-initPayPalButton();
+document.addEventListener("DOMContentLoaded", function () {
+    if (typeof paypal !== "undefined") {
+        initPayPalButton();
+    } else {
+        console.error("PayPal SDK failed to load.");
+    }
+});
