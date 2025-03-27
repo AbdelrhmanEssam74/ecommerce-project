@@ -45,7 +45,7 @@ function loadUserOrders() {
                                 <div class="order-header">
                                     <p><strong>Order ID:</strong> ${orderId}</p>
                                     <p><strong>Status:</strong> <span class="order-status">${order.status}</span></p>
-                                    <p><strong>Total:</strong> $${order.total.toFixed(2)}</p>
+                                    <p><strong>Total:</strong> EG ${order.total.toFixed(2)}</p>
                                     <p><strong>Date:</strong> ${new Date(order.timestamp).toLocaleDateString()}</p>
                                     <button class="view-details" data-id="${orderId}">View Details</button>
                                 </div>

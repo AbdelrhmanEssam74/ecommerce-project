@@ -71,3 +71,22 @@ document.addEventListener("click", function (event) {
         });
     }
 });
+
+function updateCartCount(userId) {
+    const cartRef = firebase.database().ref("cart/" + userId);
+    let totalItems = 0;
+    cartRef.once("value").then(snapshot => {
+        snapshot.forEach(item => {
+            totalItems += item.val().quantity;
+        });
+        document.querySelector(".cart-count").textContent = totalItems;
+    }).catch(error => {
+        console.error("Error updating cart count:", error);
+    });
+}
+
+if (userId) {
+    updateCartCount(userId)
+} else {
+    document.getElementById("navbar-cart").removeChild(document.querySelector(".cart-count"))
+}

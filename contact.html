@@ -110,6 +110,7 @@
 </section>
 
 <!-- Footer Section -->
+
 <footer class="footer">
     <div class="container">
         <div class="footer-grid">
@@ -155,5 +156,46 @@
         </div>
     </div>
 </footer>
+<script src="assets/JS/checkLogin.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<!-- Firebase App (Required) -->
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
+<!-- Firebase Database -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-app-compat.min.js" integrity="sha512-+sREIsioPWovonmPhKdOdLYSVtjTVf1egJBBXyB/F03Rr2F/ZfNMQUH2xaSGpYIQhIcCl2o48QVMbzr4VcEHfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-database-compat.min.js" integrity="sha512-pXaLMpJoBhnnwjagRD7t1vCeCCYppq51TrpAwbwbIM7wjUMoO8/z7rmkRxdVhO3NnETxBD/X8UbOGS0piyHRcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js"></script>
+<script>
+    const firebaseConfig = {
+        databaseURL: "https://e-commerce-iti-74-default-rtdb.asia-southeast1.firebasedatabase.app/"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const cookies = document.cookie;
+    const cookiesArr = cookies.split(";");
+    let userId = "";
+    cookiesArr.forEach((cookie) => {
+        const cookieArr = cookie.split("=");
+        if (cookieArr[0].trim() === "uid") {
+            userId = cookieArr[1];
+        }
+    });
+    function updateCartCount(userId) {
+        const cartRef = firebase.database().ref("cart/" + userId);
+        let totalItems = 0;
+        cartRef.once("value").then(snapshot => {
+            snapshot.forEach(item => {
+                totalItems += item.val().quantity;
+            });
+            document.querySelector(".cart-count").textContent = totalItems;
+        }).catch(error => {
+            console.error("Error updating cart count:", error);
+        });
+    }
+
+    if (userId) {
+        updateCartCount(userId)
+    } else {
+        document.getElementById("navbar-cart").removeChild(document.querySelector(".cart-count"))
+    }
+</script>
 </body>
 </html>
