@@ -59,6 +59,11 @@
                 <p>Tax: <span class="tax"></span></p>
                 <p class="total">Total: <span class="total-amount"></span></p>
             </div>
+            <div id="smart-button-container">
+                <div style="text-align: center;">
+                    <div id="paypal-button-container"></div>
+                </div>
+            </div>
             <button class="checkout-btn">Checkout</button>
         </div>
     </div>
@@ -66,12 +71,18 @@
 <!-- Footer Section -->
 <footer class="footer" id="footer-container">
 </footer>
+<script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD"
+        data-sdk-integration-source="button-factory"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!-- Firebase App (Required) -->
 <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-app.js"></script>
 <!-- Firebase Database -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-app-compat.min.js" integrity="sha512-+sREIsioPWovonmPhKdOdLYSVtjTVf1egJBBXyB/F03Rr2F/ZfNMQUH2xaSGpYIQhIcCl2o48QVMbzr4VcEHfA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-database-compat.min.js" integrity="sha512-pXaLMpJoBhnnwjagRD7t1vCeCCYppq51TrpAwbwbIM7wjUMoO8/z7rmkRxdVhO3NnETxBD/X8UbOGS0piyHRcg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-app-compat.min.js"
+        integrity="sha512-+sREIsioPWovonmPhKdOdLYSVtjTVf1egJBBXyB/F03Rr2F/ZfNMQUH2xaSGpYIQhIcCl2o48QVMbzr4VcEHfA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-database-compat.min.js"
+        integrity="sha512-pXaLMpJoBhnnwjagRD7t1vCeCCYppq51TrpAwbwbIM7wjUMoO8/z7rmkRxdVhO3NnETxBD/X8UbOGS0piyHRcg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://www.gstatic.com/firebasejs/10.0.0/firebase-database.js"></script>
 <script src="assets/JS/cart.js"></script>
 <script src="assets/JS/checkLogin.js"></script>

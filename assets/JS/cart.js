@@ -234,7 +234,6 @@ function checkoutOrder(userId) {
             const tax = subtotal * 0.08;
             const totalAmount = subtotal + shipping + tax;
 
-            // Create order object
             const orderData = {
                 items: cartItems,
                 subtotal: subtotal,
@@ -245,15 +244,12 @@ function checkoutOrder(userId) {
                 timestamp: new Date().toISOString()
             };
 
-            // Save order to Firebase
             return ordersRef.push(orderData);
         })
         .then(() => {
-            // Clear user's cart
             return cartRef.remove();
         })
         .then(() => {
-            // Update UI & show confirmation
             updateCartCount(userId);
             Swal.fire("Order Placed!", "Your order has been successfully placed.", "success");
         })
@@ -263,3 +259,35 @@ function checkoutOrder(userId) {
         });
 }
 
+
+function initPayPalButton() {
+    paypal.Buttons({
+        style: {
+            shape: 'rect',
+            color: 'gold',
+            layout: 'vertical',
+            label: 'paypal',
+
+        },
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{"amount":{"currency_code":"USD","value":1}}]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(orderData) {
+                console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+                const element = document.getElementById('paypal-button-container');
+                element.innerHTML = '';
+                element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+
+            });
+        },
+
+        onError: function(err) {
+            console.log(err);
+        }
+    }).render('#paypal-button-container');
+}
+initPayPalButton();
