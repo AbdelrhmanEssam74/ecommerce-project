@@ -18,7 +18,8 @@ function updateAuthButtons() {
                 <i class="fas fa-user user-icon" onclick="toggleDropdown()"></i>
                 <div class="dropdown" id="user-dropdown">
                     <a href="#">Profile</a>
-                    <a href="orders.html" id="view-orders">My Orders</a></li>
+                    <a href="orders.html" id="view-orders">My Orders</a>
+                    <a href="wishlist.html" id="view-orders">My Wishlist</a>
                     ${isAdmin ? '<a href="admin/index.html">Admin</a>' : ""} <!-- Show only if admin -->
                     <a href="#" onclick="logout()">Logout</a>
                 </div>
