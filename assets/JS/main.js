@@ -75,3 +75,45 @@ sliderTrack.addEventListener('mouseleave', () => {
     sliderTrack.style.animationPlayState = 'running';
 });
 
+
+// Initialize Firebase
+if (firebase.apps.length === 0) {
+    firebase.initializeApp(firebaseConfig);
+}
+const database = firebase.database();
+
+// Fetch products from database
+function loadProducts() {
+    const galleryGrid = document.getElementById("productGallery");
+    galleryGrid.innerHTML = ""; // Clear existing content
+
+    database.ref("products").once("value", (snapshot) => {
+        snapshot.forEach((childSnapshot) => {
+            const product = childSnapshot.val();
+            const productId = childSnapshot.key; // Unique ID
+
+            const productHTML = `
+                    <div class="gallery-item">
+                        <img src="${product.image}" alt="${product.name}">
+                        <div class="gallery-overlay">
+                            <h3 class="product-title">${product.name}</h3>
+                            <p class="product-price">EG ${product.price}</p>
+                            <button class="view-details" data-id="${productId}">View Details</button>
+                        </div>
+                    </div>
+                `;
+            galleryGrid.innerHTML += productHTML;
+        });
+
+        // Add event listener to all "View Details" buttons
+        document.querySelectorAll(".view-details").forEach((button) => {
+            button.addEventListener("click", function () {
+                const productId = this.getAttribute("data-id");
+                window.location.href = `product_details.html?id=${productId}`;
+            });
+        });
+    });
+}
+
+// Load products on page load
+loadProducts();

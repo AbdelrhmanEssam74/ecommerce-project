@@ -5,81 +5,75 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 const db = firebase.database();
 
-// Get user ID from cookies
-function getUserId() {
-    const cookies = document.cookie.split(";").map(cookie => cookie.trim());
-    let userId = "";
-    cookies.forEach(cookie => {
-        if (cookie.startsWith("uid=")) {
-            userId = cookie.split("=")[1];
-        }
-    });
-    return userId;
+// Function to get URL parameters
+function getProductIdFromURL() {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("id"); // Get 'id' from URL
 }
 
-function loadUserOrders() {
-    const userId = getUserId();
-    if (!userId) {
-        document.getElementById("orders-list").innerHTML = "<p>Please log in to view your orders.</p>";
+// Function to create product details dynamically
+function createProductHTML(product) {
+    // Select container
+    const container = document.querySelector(".product-details-page .container");
+    if (!container) {
+        console.error("Product container not found!");
         return;
     }
 
-    const ordersContainer = document.getElementById("orders-list");
-    ordersContainer.innerHTML = "<p>Loading orders...</p>";
+    // Clear existing content
+    container.innerHTML = "";
 
-    firebase.database().ref("orders/" + userId).once("value")
-        .then(snapshot => {
-            if (!snapshot.exists()) {
-                ordersContainer.innerHTML = "<p>You have no past orders.</p>";
-                return;
+    // Create product details dynamically
+    container.innerHTML = `
+        <div class="product-image">
+            <img src="${product.image || 'assets/images/default-product.jpg'}" alt="${product.name || 'Product Image'}">
+        </div>
+        <div class="product-info">
+            <h1 class="product-title">${product.name || "Unknown Product"}</h1>
+            <p class="product-price">${product.price ? `$${product.price}` : "Price Not Available"}</p>
+            <p class="product-description">${product.description || "No description available."}</p>
+
+            <div class="product-actions">
+                <button class="add-to-cart"><i class="fas fa-shopping-cart"></i> Add to Cart</button>
+                <button class="wishlist"><i class="fas fa-heart"></i> Add to Wishlist</button>
+            </div>
+
+            <div class="product-specs">
+                <h3>Specifications</h3>
+                <ul>
+                    <li><strong>Category:</strong> ${product.category || "N/A"}</li>
+                    <li><strong>Brand:</strong> ${product.brand || "N/A"}</li>
+                    <li><strong>Stock:</strong> ${product.stock ? product.stock + " available" : "Out of stock"}</li>
+                </ul>
+            </div>
+        </div>
+    `;
+}
+
+// Fetch product details from Firebase
+function loadProductDetails() {
+    const productId = getProductIdFromURL();
+
+    if (!productId) {
+        Swal.fire("Error!", "Product ID not found in the URL!", "error");
+        return;
+    }
+
+    db.ref("products/" + productId).once("value")
+        .then((snapshot) => {
+            if (snapshot.exists()) {
+                const product = snapshot.val();
+                console.log("Fetched product:", product);
+                createProductHTML(product);
+            } else {
+                Swal.fire("Error!", "Product details not found!", "error");
             }
-
-            let orders = snapshot.val();
-            ordersContainer.innerHTML = "";
-
-            Object.keys(orders).forEach(orderId => {
-                let order = orders[orderId];
-
-                let orderHTML = `
-                            <div class="order-card">
-                                <div class="order-header">
-                                    <p><strong>Order ID:</strong> ${orderId}</p>
-                                    <p><strong>Status:</strong> <span class="order-status">${order.status}</span></p>
-                                    <p><strong>Total:</strong> $${order.total.toFixed(2)}</p>
-                                    <p><strong>Date:</strong> ${new Date(order.timestamp).toLocaleDateString()}</p>
-                                    <button class="view-details" data-id="${orderId}">View Details</button>
-                                </div>
-                                <div class="order-details" id="details-${orderId}" style="display: none;">
-                                    ${Object.keys(order.items).map(productId => {
-                    let item = order.items[productId];
-                    return `
-                                            <div class="order-item">
-                                                <img src="${item.image}" alt="${item.name}" class="order-img">
-                                                <p><strong>${item.name}</strong></p>
-                                                <p>Quantity: ${item.quantity}</p>
-                                                <p>Price: $${item.price}</p>
-                                            </div>
-                                        `;
-                }).join('')}
-                                </div>
-                            </div>
-                        `;
-                ordersContainer.innerHTML += orderHTML;
-            });
-
-            // Attach event listeners to "View Details" buttons
-            document.querySelectorAll(".view-details").forEach(button => {
-                button.addEventListener("click", function () {
-                    const orderId = this.getAttribute("data-id");
-                    const detailsDiv = document.getElementById("details-" + orderId);
-                    detailsDiv.style.display = detailsDiv.style.display === "none" ? "block" : "none";
-                });
-            });
         })
-        .catch(error => {
-            console.error("Error fetching orders:", error);
-            ordersContainer.innerHTML = "<p>Error loading orders. Please try again.</p>";
+        .catch((error) => {
+            Swal.fire("Error!", "Failed to fetch product details.", "error");
+            console.error("Firebase Error:", error);
         });
 }
 
-document.addEventListener("DOMContentLoaded", loadUserOrders);
+// Load product details when the DOM is fully loaded
+document.addEventListener("DOMContentLoaded", loadProductDetails);
