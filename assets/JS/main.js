@@ -90,7 +90,7 @@ function loadProducts() {
     database.ref("products").limitToFirst(6).once("value", (snapshot) => {
         let count = 0;
         snapshot.forEach((childSnapshot) => {
-            if (count >= 6) return; // Stop after 6 products
+            if (count >= 8) return; // Stop after 8 products
             const product = childSnapshot.val();
             const productId = childSnapshot.key; // Unique ID
 
