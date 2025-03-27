@@ -121,7 +121,7 @@ function loadCartItems(userId) {
                         </div>
                         <div class="item-details">
                             <h3 class="item-title">${item.name}</h3>
-                            <p class="item-price">$${item.price}</p>
+                            <p class="item-price">EG ${item.price}</p>
                             <div class="item-quantity">
                                 <button class="quantity-btn" data-action="decrease">-</button>
                                 <input type="number" class="quantity-input" value="${item.quantity}" min="1">
@@ -149,10 +149,10 @@ function updateCartSummary(subtotal) {
     const tax = subtotal * 0.08;
     const total = subtotal + shipping + tax;
 
-    document.querySelector(".subtotal").textContent = `$${subtotal.toFixed(2)}`;
-    document.querySelector(".shipping").textContent = `$${shipping.toFixed(2)}`;
-    document.querySelector(".tax").textContent = `$${tax.toFixed(2)}`;
-    document.querySelector(".total-amount").textContent = `$${total.toFixed(2)}`;
+    document.querySelector(".subtotal").textContent = `EG ${subtotal.toFixed(2)}`;
+    document.querySelector(".shipping").textContent = `EG ${shipping.toFixed(2)}`;
+    document.querySelector(".tax").textContent = `EG ${tax.toFixed(2)}`;
+    document.querySelector(".total-amount").textContent = `EG ${total.toFixed(2)}`;
 }
 
 document.addEventListener("click", function (event) {
