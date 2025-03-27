@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 fetchAndDisplayProducts();
             })
             .catch((error) => {
-                Swal.fire("Error", "Error adding product: " + error.message, "error");
+                console.log(error)
             });
     }
 
